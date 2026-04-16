@@ -1,0 +1,210 @@
+export const stats = [
+  { value: '18k+', label: 'Satisfied Customers', dark: true },
+  { value: '17k+', label: 'Total Partners', dark: true },
+  { value: '13+',  label: 'Years of Experience', dark: false },
+  { value: '14k+', label: 'Property Available', dark: false },
+]
+
+export const services = [
+  {
+    id: 'buy',
+    title: 'Buy a home',
+    description: 'Find your place with an immersive photo experience and the most listings, including homes not yet on the market.',
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80',
+    alt: 'Spacious suburban house with covered porch and green lawn',
+    href: '/buy',
+  },
+  {
+    id: 'sell',
+    title: 'Selling a home',
+    description: 'No matter what path you take to sell your home, we can help you navigate a successful sale.',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+    alt: 'Modern home exterior with real estate sign in front',
+    href: '/sell',
+  },
+  {
+    id: 'rent',
+    title: 'Rent a home',
+    description: "We're creating a seamless online experience — from searching to signing — for renters nationwide.",
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80',
+    alt: 'Bright modern apartment living room with large windows',
+    href: '/rent',
+  },
+]
+
+export const loanFeatures = [
+  {
+    icon: 'award',
+    title: 'Top-rated loan officers help',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance and support throughout the process.',
+  },
+  {
+    icon: 'trending-down',
+    title: 'Competitive rates',
+    description: 'Strong data, no hidden fees, and total transparency. We work hard to secure the most competitive rates available.',
+  },
+  {
+    icon: 'dollar-sign',
+    title: 'Low down payment options',
+    description: 'We offer a variety of loan options to meet your needs and help make home ownership more accessible.',
+  },
+]
+
+export const galleryItems = [
+  {
+    id: 1,
+    title: 'Efficient Wardrobe Arrangements',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance.',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80',
+    alt: 'Luxury villa with private pool and manicured garden',
+  },
+  {
+    id: 2,
+    title: 'Efficient Wardrobe Arrangements',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance.',
+    image: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=500&q=80',
+    alt: 'Contemporary house with wooden deck and outdoor furniture',
+  },
+  {
+    id: 3,
+    title: 'Fresh and Inviting Indoor Space',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance.',
+    image: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=500&q=80',
+    alt: 'Bright living room with natural light and minimalist decor',
+  },
+  {
+    id: 4,
+    title: 'Creating Bookish Sanctuaries',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance.',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80',
+    alt: 'Modern white villa with infinity pool at sunset',
+  },
+  {
+    id: 5,
+    title: 'The Art Kitchen',
+    description: 'With a 4.8-star average rating, our loan officers provide step-by-step guidance.',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80',
+    alt: 'Sleek modern kitchen with marble countertops and island',
+  },
+]
+
+export const testimonials = [
+  {
+    id: 1,
+    name: 'John O.',
+    role: 'UX Designer',
+    rating: 4.9,
+    text: "Thanks to Bihub Homes, I found my dream home. I highly recommend this platform. The process was quick, transparent, and stress-free.",
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80',
+    alt: 'John O., UX Designer',
+  },
+  {
+    id: 2,
+    name: 'Jessie Hibo',
+    role: 'UX Designer',
+    rating: 4.9,
+    text: "Had an incredible experience selling my home through the website. The process was clear every step of the way, and we sold within a week.",
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80',
+    alt: 'Jessie Hibo, UX Designer',
+  },
+  {
+    id: 3,
+    name: 'Emily K.',
+    role: 'UX Designer',
+    rating: 4.9,
+    text: "As a first-time renter, I was nervous about the loan process. However, the loan officers were clearly explained and the application was straightforward.",
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80',
+    alt: 'Emily K., UX Designer',
+  },
+  {
+    id: 4,
+    name: 'Sarah L.',
+    role: 'UX Designer',
+    rating: 4.9,
+    text: "The best part about this site is the comprehensive service it offers. From finding a property to securing a loan, everything was handled with the supplier and transparency.",
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80',
+    alt: 'Sarah L., UX Designer',
+  },
+]
+
+export const partners = [
+  { name: 'Indigo Realty Group', logo: null },
+  { name: 'Home Properties', logo: null },
+  { name: 'Premier Estates', logo: null },
+  { name: 'Atlas Real Estate', logo: null },
+]
+
+export const listings = [
+  {
+    id: 1,
+    title: 'Modern Family Home',
+    location: 'Austin, TX',
+    price: '$485,000',
+    beds: 4,
+    baths: 3,
+    sqft: '2,400',
+    type: 'buy',
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80',
+    alt: 'Spacious modern family home with large windows',
+  },
+  {
+    id: 2,
+    title: 'Downtown Luxury Condo',
+    location: 'Chicago, IL',
+    price: '$2,800/mo',
+    beds: 2,
+    baths: 2,
+    sqft: '1,100',
+    type: 'rent',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80',
+    alt: 'Bright modern condo with city skyline view',
+  },
+  {
+    id: 3,
+    title: 'Lakefront Villa',
+    location: 'Miami, FL',
+    price: '$1,250,000',
+    beds: 5,
+    baths: 4,
+    sqft: '4,800',
+    type: 'buy',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80',
+    alt: 'Luxury villa with pool and lake view',
+  },
+  {
+    id: 4,
+    title: 'Charming Craftsman',
+    location: 'Portland, OR',
+    price: '$375,000',
+    beds: 3,
+    baths: 2,
+    sqft: '1,800',
+    type: 'buy',
+    image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80',
+    alt: 'Classic craftsman home with front porch',
+  },
+  {
+    id: 5,
+    title: 'Studio Apartment',
+    location: 'New York, NY',
+    price: '$1,950/mo',
+    beds: 1,
+    baths: 1,
+    sqft: '550',
+    type: 'rent',
+    image: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=600&q=80',
+    alt: 'Compact studio apartment with modern furnishings',
+  },
+  {
+    id: 6,
+    title: 'Suburban Estate',
+    location: 'Scottsdale, AZ',
+    price: '$720,000',
+    beds: 5,
+    baths: 4,
+    sqft: '3,600',
+    type: 'buy',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80',
+    alt: 'Large suburban estate with pool and desert landscaping',
+  },
+]

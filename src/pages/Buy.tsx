@@ -22,31 +22,27 @@ export default function Buy() {
         imageAlt="Spacious family home with green lawn and blue sky"
       />
 
-      <section className="py-16" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
+      {/* Search bar */}
+      <section style={{ backgroundColor: 'var(--color-surface-alt)', padding: '2.5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
           <div
-            className="flex flex-col sm:flex-row gap-3 p-3 rounded-[var(--radius-md)]"
-            style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-            role="search"
-            aria-label="Search homes for sale"
+            role="search" aria-label="Search homes for sale"
+            style={{ display: 'flex', gap: '0.5rem', padding: '0.375rem', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}
           >
             <label htmlFor="buy-search" className="sr-only">Search by location</label>
-            <div className="flex-1 flex items-center gap-2 px-3">
-              <Search size={16} style={{ color: 'var(--color-text-muted)' }} aria-hidden="true" />
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0 0.75rem' }}>
+              <Search size={15} color="var(--color-text-muted)" aria-hidden="true" />
               <input
-                id="buy-search"
-                type="text"
+                id="buy-search" type="text"
                 placeholder="City, neighbourhood, or address"
-                className="flex-1 py-2 text-sm bg-transparent outline-none"
-                style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}
+                style={{ flex: 1, border: 'none', outline: 'none', fontSize: '0.875rem', fontFamily: 'var(--font-body)', color: 'var(--color-text)', background: 'transparent', padding: '0.5rem 0' }}
               />
             </div>
             <button
               type="button"
-              className="px-6 py-2.5 text-sm font-medium rounded-[var(--radius-sm)] transition-colors"
-              style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent-dark)')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent)')}
+              style={{ padding: '0.625rem 1.5rem', fontSize: '0.875rem', fontWeight: 600, backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', transition: 'background 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--color-accent-dark)')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--color-accent)')}
             >
               Search
             </button>
@@ -54,32 +50,30 @@ export default function Buy() {
         </div>
       </section>
 
-      <section aria-labelledby="buy-listings-heading" className="py-16" style={{ backgroundColor: 'var(--color-bg)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2
-            id="buy-listings-heading"
-            className="text-3xl mb-8"
-            style={{ color: 'var(--color-text)' }}
-          >
+      {/* Listings */}
+      <section aria-labelledby="buy-listings-heading" style={{ backgroundColor: 'var(--color-bg)', padding: '5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+          <h2 id="buy-listings-heading" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', color: 'var(--color-text)', marginBottom: '2rem' }}>
             Homes For Sale
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="listings-grid">
             {buyListings.map((l) => <ListingCard key={l.id} {...l} />)}
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="buy-steps-heading" className="py-16" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2 id="buy-steps-heading" className="text-3xl mb-10" style={{ color: 'var(--color-text)' }}>
+      {/* How it works */}
+      <section aria-labelledby="buy-steps-heading" style={{ backgroundColor: 'var(--color-surface-alt)', padding: '5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+          <h2 id="buy-steps-heading" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', color: 'var(--color-text)', marginBottom: '3rem' }}>
             How Buying Works
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="listings-grid">
             {steps.map((s) => (
-              <div key={s.num}>
-                <p className="text-4xl font-bold mb-3" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-border)' }}>{s.num}</p>
-                <h3 className="text-base font-semibold mb-2" style={{ color: 'var(--color-text)' }}>{s.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>{s.desc}</p>
+              <div key={s.num} style={{ padding: '1.75rem', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-border)', lineHeight: 1, marginBottom: '1rem' }}>{s.num}</p>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, fontFamily: 'var(--font-display)', color: 'var(--color-text)', marginBottom: '0.5rem' }}>{s.title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{s.desc}</p>
               </div>
             ))}
           </div>

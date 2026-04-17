@@ -7,10 +7,7 @@ const filters = ['All', 'Buy', 'Rent']
 
 export default function Listings() {
   const [active, setActive] = useState('All')
-
-  const filtered = active === 'All'
-    ? listings
-    : listings.filter((l) => l.type === active.toLowerCase())
+  const filtered = active === 'All' ? listings : listings.filter((l) => l.type === active.toLowerCase())
 
   return (
     <>
@@ -21,26 +18,25 @@ export default function Listings() {
         imageAlt="Aerial view of a luxury residential neighbourhood"
       />
 
-      <section aria-labelledby="listings-heading" className="py-16" style={{ backgroundColor: 'var(--color-bg)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-            <h2 id="listings-heading" className="text-3xl" style={{ color: 'var(--color-text)' }}>
+      <section aria-labelledby="listings-heading" style={{ backgroundColor: 'var(--color-bg)', padding: '5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+
+          {/* Header + filter */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <h2 id="listings-heading" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', color: 'var(--color-text)' }}>
               {filtered.length} Properties
             </h2>
             <div
-              className="flex gap-1 p-1 rounded-[var(--radius-sm)]"
-              role="group"
-              aria-label="Filter by property type"
-              style={{ backgroundColor: 'var(--color-surface-alt)' }}
+              role="group" aria-label="Filter by type"
+              style={{ display: 'flex', gap: '0.25rem', padding: '0.25rem', backgroundColor: 'var(--color-surface-alt)', borderRadius: 'var(--radius-sm)' }}
             >
               {filters.map((f) => (
                 <button
-                  key={f}
-                  type="button"
+                  key={f} type="button" aria-pressed={active === f}
                   onClick={() => setActive(f)}
-                  aria-pressed={active === f}
-                  className="px-4 py-2 text-xs font-medium rounded-[var(--radius-sm)] transition-all duration-200"
                   style={{
+                    padding: '0.5rem 1rem', fontSize: '0.825rem', fontWeight: 500,
+                    borderRadius: 'var(--radius-sm)', border: 'none', cursor: 'pointer', transition: 'all 0.15s',
                     backgroundColor: active === f ? 'var(--color-surface)' : 'transparent',
                     color: active === f ? 'var(--color-text)' : 'var(--color-text-muted)',
                     boxShadow: active === f ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
@@ -52,7 +48,7 @@ export default function Listings() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="listings-grid">
             {filtered.map((l) => <ListingCard key={l.id} {...l} />)}
           </div>
         </div>

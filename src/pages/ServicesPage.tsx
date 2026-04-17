@@ -4,10 +4,10 @@ import { services } from '../lib/demo-data'
 import { ArrowRight, Home, BarChart2, Key, Building2 } from 'lucide-react'
 
 const extras = [
-  { icon: Building2, title: 'Commercial Real Estate', desc: 'Office spaces, retail, and industrial properties for businesses of all sizes.' },
-  { icon: BarChart2, title: 'Investment Advisory', desc: 'Data-driven market insights to help you build a profitable property portfolio.' },
-  { icon: Key, title: 'Property Management', desc: 'End-to-end management for landlords — we handle tenants, maintenance, and more.' },
-  { icon: Home, title: 'Relocation Services', desc: 'Smooth transitions for individuals and families moving to a new city or country.' },
+  { icon: Building2,  title: 'Commercial Real Estate', desc: 'Office spaces, retail, and industrial properties for businesses of all sizes.' },
+  { icon: BarChart2,  title: 'Investment Advisory',    desc: 'Data-driven market insights to help you build a profitable property portfolio.' },
+  { icon: Key,        title: 'Property Management',    desc: 'End-to-end management for landlords — we handle tenants, maintenance, and more.' },
+  { icon: Home,       title: 'Relocation Services',    desc: 'Smooth transitions for individuals and families moving to a new city or country.' },
 ]
 
 export default function ServicesPage() {
@@ -20,35 +20,31 @@ export default function ServicesPage() {
         imageAlt="Aerial view of a luxury residential community"
       />
 
-      <section aria-labelledby="core-services-heading" className="py-20" style={{ backgroundColor: 'var(--color-bg)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2 id="core-services-heading" className="text-4xl mb-10" style={{ color: 'var(--color-text)' }}>
+      {/* Core services */}
+      <section aria-labelledby="core-services-heading" style={{ backgroundColor: 'var(--color-bg)', padding: '5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+          <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-accent)', marginBottom: '0.75rem' }}>What We Do</p>
+          <h2 id="core-services-heading" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', color: 'var(--color-text)', marginBottom: '3rem' }}>
             Core Services
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="services-grid">
             {services.map((service) => (
               <article
                 key={service.id}
-                className="group rounded-[var(--radius-md)] overflow-hidden transition-all duration-300 hover:-translate-y-1"
-                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
+                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden', transition: 'transform 0.3s, box-shadow 0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.09)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
               >
-                <div className="overflow-hidden" style={{ height: '200px' }}>
-                  <img
-                    src={service.image}
-                    alt={service.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div style={{ height: 200, overflow: 'hidden' }}>
+                  <img src={service.image} alt={service.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} />
                 </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}>{service.title}</h3>
-                  <p className="text-sm mb-4 leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>{service.description}</p>
-                  <Link
-                    to={service.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors"
-                    style={{ color: 'var(--color-brand)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent-dark)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-brand)')}
-                  >
+                <div style={{ padding: '1.25rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 600, color: 'var(--color-text)', marginBottom: '0.5rem' }}>{service.title}</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '1rem' }}>{service.description}</p>
+                  <Link to={service.href}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-brand)', textDecoration: 'none' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent-dark)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-brand)')}>
                     Learn More <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
@@ -58,30 +54,39 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section aria-labelledby="extra-services-heading" className="py-20" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2 id="extra-services-heading" className="text-4xl mb-10" style={{ color: 'var(--color-text)' }}>
+      {/* Extra services */}
+      <section aria-labelledby="extra-services-heading" style={{ backgroundColor: 'var(--color-surface-alt)', padding: '5rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+          <h2 id="extra-services-heading" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', color: 'var(--color-text)', marginBottom: '3rem' }}>
             Additional Services
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="listings-grid">
             {extras.map(({ icon: Icon, title, desc }) => (
-              <div
-                key={title}
-                className="p-6 rounded-[var(--radius-md)]"
-                style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-              >
-                <div
-                  className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'var(--color-surface-alt)' }}
-                  aria-hidden="true"
-                >
-                  <Icon size={20} style={{ color: 'var(--color-accent)' }} />
+              <div key={title} style={{ padding: '1.75rem', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: 'var(--color-surface-alt)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }} aria-hidden="true">
+                  <Icon size={20} color="var(--color-accent)" />
                 </div>
-                <h3 className="text-sm font-semibold mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>{desc}</p>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, fontFamily: 'var(--font-display)', color: 'var(--color-text)', marginBottom: '0.5rem' }}>{title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ backgroundColor: 'var(--color-brand)', padding: '4rem 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+          <div>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', color: '#fff', marginBottom: '0.5rem' }}>Ready to get started?</h2>
+            <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>Talk to our team today — no commitment required.</p>
+          </div>
+          <Link to="/contact"
+            style={{ display: 'inline-flex', alignItems: 'center', padding: '0.875rem 2rem', fontSize: '0.875rem', fontWeight: 600, backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)', borderRadius: 'var(--radius-sm)', textDecoration: 'none', transition: 'background 0.2s', whiteSpace: 'nowrap' }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--color-accent-dark)')}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--color-accent)')}>
+            Contact Us
+          </Link>
         </div>
       </section>
     </>

@@ -23,51 +23,46 @@ const footerLinks = {
   ],
 }
 
+const linkMuted = 'rgba(240,237,228,0.6)'
+const linkBase = 'rgba(240,237,228,0.65)'
+
 export default function Footer() {
   return (
-    <footer
-      role="contentinfo"
-      style={{ backgroundColor: 'var(--color-dark-bg)', color: 'var(--color-dark-text)' }}
-    >
-      <div className="max-w-[1200px] mx-auto px-6 pt-16 pb-8">
-        <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <div className="max-w-xs">
-            <p
-              className="text-xl font-bold mb-3"
-              style={{ fontFamily: 'var(--font-display)', color: 'var(--color-dark-text)' }}
-            >
+    <footer role="contentinfo" style={{ backgroundColor: 'var(--color-dark-bg)', color: 'var(--color-dark-text)' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '4rem 1.5rem 2rem' }}>
+
+        {/* Top row */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '3rem', marginBottom: '4rem', flexWrap: 'wrap' }}>
+          {/* Brand */}
+          <div style={{ maxWidth: 220 }}>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-dark-text)', marginBottom: '0.75rem' }}>
               BIHUB HOMES
             </p>
             <a
               href="mailto:bihub.realestate@gmail.com"
-              className="flex items-center gap-1 text-sm transition-colors duration-200"
-              style={{ color: 'rgba(240,237,228,0.6)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(240,237,228,0.6)')}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.825rem', color: linkMuted, textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
+              onMouseLeave={e => (e.currentTarget.style.color = linkMuted)}
             >
-              bihub.realestate@gmail.com
-              <ArrowUpRight size={14} />
+              bihub.realestate@gmail.com <ArrowUpRight size={13} />
             </a>
           </div>
 
-          <div className="grid grid-cols-3 gap-12">
+          {/* Links */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem' }}>
             {Object.entries(footerLinks).map(([group, links]) => (
               <div key={group}>
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest mb-4"
-                  style={{ color: 'rgba(240,237,228,0.4)' }}
-                >
+                <p style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'rgba(240,237,228,0.35)', marginBottom: '1rem' }}>
                   {group}
                 </p>
-                <ul className="flex flex-col gap-3">
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                   {links.map((link) => (
                     <li key={link.label}>
                       <Link
                         to={link.href}
-                        className="text-sm transition-colors duration-200"
-                        style={{ color: 'rgba(240,237,228,0.65)' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-dark-text)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(240,237,228,0.65)')}
+                        style={{ fontSize: '0.85rem', color: linkBase, textDecoration: 'none', transition: 'color 0.2s' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-dark-text)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = linkBase)}
                       >
                         {link.label}
                       </Link>
@@ -79,24 +74,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div
-          className="border-t pt-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4"
-          style={{ borderColor: 'rgba(240,237,228,0.1)' }}
-        >
-          <p
-            className="text-xs"
-            style={{ color: 'rgba(240,237,228,0.35)' }}
-          >
+        {/* Bottom bar */}
+        <div style={{ borderTop: '1px solid rgba(240,237,228,0.08)', paddingTop: '1.5rem', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(240,237,228,0.3)' }}>
             © {new Date().getFullYear()} Bihub Homes. All rights reserved.
           </p>
           <p
-            className="font-bold tracking-tighter leading-none select-none"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(3rem, 10vw, 7rem)',
-              color: 'rgba(240,237,228,0.06)',
-            }}
             aria-hidden="true"
+            style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1,
+              fontSize: 'clamp(2.5rem, 8vw, 6rem)', letterSpacing: '-0.03em',
+              color: 'rgba(240,237,228,0.05)', userSelect: 'none',
+            }}
           >
             BIHUB HOMES
           </p>

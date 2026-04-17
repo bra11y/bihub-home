@@ -22,44 +22,39 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [location])
+  useEffect(() => { setMobileOpen(false) }, [location])
 
   return (
     <header
       role="banner"
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
         backgroundColor: scrolled ? 'var(--color-surface)' : 'transparent',
-        boxShadow: scrolled ? '0 1px 0 var(--color-border)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--color-border)' : 'none',
+        transition: 'background-color 0.3s ease, border-color 0.3s ease',
       }}
     >
-      <div
-        className="max-w-[1200px] mx-auto px-6 flex items-center justify-between"
-        style={{ height: '72px' }}
-      >
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link
           to="/"
-          className="font-bold text-xl tracking-tight"
-          style={{ fontFamily: 'var(--font-display)', color: scrolled ? 'var(--color-brand)' : '#ffffff' }}
           aria-label="Bihub Homes — home"
+          style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.1rem', letterSpacing: '-0.02em', color: scrolled ? 'var(--color-brand)' : '#fff', textDecoration: 'none' }}
         >
           BIHUB HOMES
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
+        {/* Desktop Nav */}
+        <nav aria-label="Main navigation" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="md:flex hidden-mobile">
           {navLinks.map((link) => {
             const active = location.pathname === link.href
             return (
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-sm font-medium transition-colors duration-200"
                 style={{
-                  color: scrolled
-                    ? active ? 'var(--color-brand)' : 'var(--color-text-muted)'
-                    : active ? 'var(--color-accent)' : 'rgba(255,255,255,0.85)',
+                  fontSize: '0.875rem', fontWeight: 500, textDecoration: 'none',
+                  color: scrolled ? (active ? 'var(--color-brand)' : 'var(--color-text-muted)') : (active ? 'var(--color-accent)' : 'rgba(255,255,255,0.85)'),
+                  transition: 'color 0.2s',
                 }}
                 aria-current={active ? 'page' : undefined}
               >
@@ -69,49 +64,48 @@ export default function Navbar() {
           })}
         </nav>
 
-        <Link
-          to="/contact"
-          className="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-[var(--radius-sm)] transition-colors duration-200"
-          style={{
-            backgroundColor: 'var(--color-accent)',
-            color: 'var(--color-dark-bg)',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent-dark)')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent)')}
-        >
-          Contact Us
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Link
+            to="/contact"
+            className="btn btn-primary"
+            style={{ fontSize: '0.8rem', padding: '0.5rem 1.25rem', display: window.innerWidth < 768 ? 'none' : 'inline-flex' }}
+          >
+            Contact Us
+          </Link>
 
-        <button
-          className="md:hidden p-2 rounded-[var(--radius-sm)]"
-          style={{ color: scrolled ? 'var(--color-text)' : '#ffffff' }}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          type="button"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <button
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            style={{
+              display: 'none', background: 'none', border: 'none', padding: '0.5rem',
+              color: scrolled ? 'var(--color-text)' : '#fff', cursor: 'pointer',
+            }}
+            className="mobile-menu-btn"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="md:hidden"
           style={{ backgroundColor: 'var(--color-surface)', borderTop: '1px solid var(--color-border)' }}
         >
-          <nav aria-label="Mobile navigation" className="flex flex-col px-6 py-4 gap-1">
+          <nav aria-label="Mobile navigation" style={{ display: 'flex', flexDirection: 'column', padding: '1rem 1.5rem', gap: '0.25rem' }}>
             {navLinks.map((link) => {
               const active = location.pathname === link.href
               return (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="py-3 text-sm font-medium border-b transition-colors duration-200"
                   style={{
+                    padding: '0.75rem 0', fontSize: '0.9rem', fontWeight: 500,
                     color: active ? 'var(--color-brand)' : 'var(--color-text-muted)',
-                    borderColor: 'var(--color-border)',
+                    borderBottom: '1px solid var(--color-border)', textDecoration: 'none',
                   }}
                   aria-current={active ? 'page' : undefined}
                 >
@@ -121,14 +115,21 @@ export default function Navbar() {
             })}
             <Link
               to="/contact"
-              className="mt-3 inline-flex items-center justify-center px-5 py-3 text-sm font-medium rounded-[var(--radius-sm)]"
-              style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)' }}
+              className="btn btn-primary"
+              style={{ marginTop: '1rem', justifyContent: 'center' }}
             >
               Contact Us
             </Link>
           </nav>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hidden-mobile { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
+        }
+      `}</style>
     </header>
   )
 }

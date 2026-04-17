@@ -5,87 +5,86 @@ const tabs = ['Architecture', 'House', 'Commercial']
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState('Architecture')
-  const [searchQuery, setSearchQuery] = useState('')
 
   return (
-    <section
-      aria-labelledby="hero-heading"
-      className="relative min-h-screen flex flex-col justify-between overflow-hidden"
-    >
-      <div className="absolute inset-0 z-0">
+    <section aria-labelledby="hero-heading" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* Background */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <img
           src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1800&q=80"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover"
+          alt="" aria-hidden="true"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(15, 35, 24, 0.55)' }}
-        />
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(15,35,24,0.58)' }} />
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center pt-28 pb-16">
-        <div className="max-w-[1200px] mx-auto px-6 w-full">
-          <div className="max-w-xl">
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '8rem', paddingBottom: '3rem' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', width: '100%' }}>
+          <div style={{ maxWidth: 560 }}>
             <h1
               id="hero-heading"
-              className="text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
-              style={{ color: '#ffffff' }}
+              style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', lineHeight: 1.05, color: '#fff', marginBottom: '1.25rem' }}
             >
               We Build
               <br />
               <em style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>Community</em>
             </h1>
-            <p className="text-base md:text-lg mb-8 max-w-md" style={{ color: 'rgba(255,255,255,0.75)' }}>
+            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.75)', marginBottom: '2rem', maxWidth: 420, lineHeight: 1.7 }}>
               Welcome to a world where luxury meets lifestyle. Our properties offer you more than just a home — they give you a life.
             </p>
 
+            {/* Search bar */}
             <div
-              className="rounded-[var(--radius-md)] p-2 flex flex-col sm:flex-row gap-2"
-              style={{ backgroundColor: 'var(--color-surface)' }}
               role="search"
               aria-label="Property search"
+              style={{
+                background: 'var(--color-surface)', borderRadius: 'var(--radius-md)',
+                padding: '0.375rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center',
+              }}
             >
-              <label htmlFor="hero-search" className="sr-only">Search for a property location</label>
-              <div className="flex-1 flex items-center gap-2 px-3">
-                <MapPin size={16} style={{ color: 'var(--color-text-muted)' }} aria-hidden="true" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0 0.75rem', flex: 1, minWidth: 180 }}>
+                <MapPin size={15} style={{ color: 'var(--color-text-muted)', flexShrink: 0 }} aria-hidden="true" />
+                <label htmlFor="hero-search" className="sr-only">Search location</label>
                 <input
                   id="hero-search"
                   type="text"
                   placeholder="Search for the price you're looking for"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 py-2 text-sm bg-transparent outline-none"
-                  style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}
+                  style={{
+                    flex: 1, border: 'none', outline: 'none', fontSize: '0.875rem',
+                    fontFamily: 'var(--font-body)', color: 'var(--color-text)',
+                    background: 'transparent', padding: '0.5rem 0',
+                  }}
                 />
               </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-[var(--radius-sm)] transition-colors"
-                  style={{ color: 'var(--color-text-muted)', backgroundColor: 'var(--color-surface-alt)' }}
-                >
-                  Price <ChevronDown size={12} />
-                </button>
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-[var(--radius-sm)] transition-colors"
-                  style={{ color: 'var(--color-text-muted)', backgroundColor: 'var(--color-surface-alt)' }}
-                >
-                  Property <ChevronDown size={12} />
-                </button>
+              <div style={{ display: 'flex', gap: '0.375rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                {['Price', 'Property'].map((f) => (
+                  <button
+                    key={f}
+                    type="button"
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '0.25rem',
+                      padding: '0.5rem 0.875rem', fontSize: '0.8rem', fontWeight: 500,
+                      background: 'var(--color-surface-alt)', border: 'none',
+                      borderRadius: 'var(--radius-sm)', color: 'var(--color-text-muted)', cursor: 'pointer',
+                    }}
+                  >
+                    {f} <ChevronDown size={12} />
+                  </button>
+                ))}
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-[var(--radius-sm)] transition-colors"
-                  style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent-dark)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-accent)')}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: '0.375rem',
+                    padding: '0.625rem 1.25rem', fontSize: '0.875rem', fontWeight: 600,
+                    background: 'var(--color-accent)', border: 'none', borderRadius: 'var(--radius-sm)',
+                    color: 'var(--color-dark-bg)', cursor: 'pointer', transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-accent-dark)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'var(--color-accent)')}
                   aria-label="Search properties"
                 >
-                  <Search size={15} aria-hidden="true" />
-                  Search
+                  <Search size={14} aria-hidden="true" /> Search
                 </button>
               </div>
             </div>
@@ -93,46 +92,40 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full pb-0">
-        <div
-          className="rounded-t-[var(--radius-md)] p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-          style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-dark-bg)' }}
-        >
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest opacity-70 mb-0.5">Budget-Friendly</p>
-            <p className="text-sm font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-              Find a home that suits your budget
-            </p>
+      {/* CTA Banner */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+          <div style={{
+            background: 'var(--color-accent)', borderRadius: 'var(--radius-md) var(--radius-md) 0 0',
+            padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem',
+          }}>
+            <div>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'rgba(15,35,24,0.6)', marginBottom: '0.2rem' }}>Budget-Friendly</p>
+              <p style={{ fontSize: '0.9rem', fontWeight: 600, fontFamily: 'var(--font-display)', color: 'var(--color-dark-bg)' }}>Find a home that suits your budget</p>
+            </div>
+            <a href="/listings" style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-dark-bg)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              View Listings →
+            </a>
           </div>
-          <a
-            href="/listings"
-            className="text-xs font-semibold underline underline-offset-2 whitespace-nowrap"
-            style={{ color: 'var(--color-dark-bg)' }}
-          >
-            View Listings →
-          </a>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full">
-        <div
-          className="flex gap-0 border-b"
-          role="tablist"
-          aria-label="Property type filter"
-          style={{ borderColor: 'rgba(255,255,255,0.2)' }}
-        >
+      {/* Tabs */}
+      <div style={{ position: 'relative', zIndex: 1, borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', display: 'flex' }}>
           {tabs.map((tab) => (
             <button
               key={tab}
-              role="tab"
               type="button"
+              role="tab"
               aria-selected={activeTab === tab}
               onClick={() => setActiveTab(tab)}
-              className="px-5 py-3 text-xs font-semibold uppercase tracking-widest transition-all duration-200"
               style={{
-                color: activeTab === tab ? 'var(--color-accent)' : 'rgba(255,255,255,0.55)',
+                padding: '0.875rem 1.25rem', fontSize: '0.75rem', fontWeight: 600,
+                textTransform: 'uppercase', letterSpacing: '0.1em', background: 'none', border: 'none',
                 borderBottom: activeTab === tab ? '2px solid var(--color-accent)' : '2px solid transparent',
-                background: 'none',
+                color: activeTab === tab ? 'var(--color-accent)' : 'rgba(255,255,255,0.5)',
+                cursor: 'pointer', transition: 'color 0.2s',
               }}
             >
               {tab}

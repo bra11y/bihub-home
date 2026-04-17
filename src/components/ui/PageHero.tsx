@@ -7,14 +7,18 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, image, imageAlt }: PageHeroProps) {
   return (
-    <section className="relative pt-28 pb-20 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img src={image} alt={imageAlt} className="w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 35, 24, 0.68)' }} />
+    <section style={{ position: 'relative', paddingTop: '10rem', paddingBottom: '5rem', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <img src={image} alt={imageAlt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(15,35,24,0.7)' }} />
       </div>
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        <h1 className="text-5xl md:text-6xl mb-5" style={{ color: '#ffffff' }}>{title}</h1>
-        <p className="text-base max-w-lg" style={{ color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1.25rem', lineHeight: 1.1, maxWidth: 640 }}>
+          {title}
+        </h1>
+        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.72)', maxWidth: 520, lineHeight: 1.75 }}>
+          {subtitle}
+        </p>
       </div>
     </section>
   )

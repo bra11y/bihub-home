@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Award, TrendingDown, DollarSign, ArrowRight } from 'lucide-react'
 import { loanFeatures } from '../../lib/demo-data'
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; color?: string }>> = {
   award: Award,
   'trending-down': TrendingDown,
   'dollar-sign': DollarSign,
@@ -10,46 +10,34 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; style?: React
 
 export default function HomeLoans() {
   return (
-    <section
-      aria-labelledby="loans-heading"
-      className="py-20"
-      style={{ backgroundColor: 'var(--color-surface-alt)' }}
-    >
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-center max-w-lg mx-auto mb-14">
-          <h2
-            id="loans-heading"
-            className="text-4xl md:text-5xl mb-4"
-            style={{ color: 'var(--color-text)' }}
-          >
-            Why Bihub Homes
-            <br />
-            Home Loans?
+    <section aria-labelledby="loans-heading" style={{ backgroundColor: 'var(--color-surface-alt)', padding: '5rem 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem' }}>
+
+        <div style={{ textAlign: 'center', maxWidth: 480, margin: '0 auto 3.5rem' }}>
+          <h2 id="loans-heading" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: 'var(--color-text)', lineHeight: 1.15, marginBottom: '1rem' }}>
+            Why Bihub Homes<br />Home Loans?
           </h2>
-          <p className="text-base" style={{ color: 'var(--color-text-muted)' }}>
+          <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
             Getting home is a journey. Our loan officers are here to help you stay on budget and on schedule.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
+        <div className="loans-grid">
           {loanFeatures.map((feature) => {
             const Icon = iconMap[feature.icon]
             return (
-              <div key={feature.title} className="flex flex-col items-start">
-                <div
-                  className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
-                  aria-hidden="true"
-                >
-                  <Icon size={20} style={{ color: 'var(--color-accent)' }} />
+              <div key={feature.title}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem',
+                }} aria-hidden="true">
+                  <Icon size={20} color="var(--color-accent)" />
                 </div>
-                <h3
-                  className="text-base font-semibold mb-2"
-                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-text)' }}
-                >
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, fontFamily: 'var(--font-display)', color: 'var(--color-text)', marginBottom: '0.5rem' }}>
                   {feature.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
                   {feature.description}
                 </p>
               </div>
@@ -57,13 +45,12 @@ export default function HomeLoans() {
           })}
         </div>
 
-        <div className="text-center">
+        <div style={{ textAlign: 'center' }}>
           <Link
             to="/home-loans"
-            className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
-            style={{ color: 'var(--color-brand)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent-dark)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-brand)')}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-brand)', textDecoration: 'none' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent-dark)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-brand)')}
           >
             See all Loan Pricing <ArrowRight size={14} aria-hidden="true" />
           </Link>
